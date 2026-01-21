@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Titanic Survival Predictor</title>
+    <style>
+        body { background: #121212; color: white; font-family: sans-serif; text-align: center; }
+        .card { background: #1e1e1e; padding: 2rem; border-radius: 15px; display: inline-block; margin-top: 50px; border: 1px solid #333; }
+        select, input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; }
+        button { background: #00cf8d; color: black; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>🚢 Titanic Survival Predictor</h2>
+        <form action="/predict" method="post">
+            <select name="pclass" required>
+                <option value="1">1st Class (Upper)</option>
+                <option value="2">2nd Class (Middle)</option>
+                <option value="3">3rd Class (Lower)</option>
+            </select>
+            <select name="sex" required>
+                <option value="1">Female</option>
+                <option value="0">Male</option>
+            </select>
+            <input type="number" name="age" placeholder="Age" required>
+            <input type="number" name="sibsp" placeholder="Siblings/Spouses Aboard" required>
+            <input type="number" name="parch" placeholder="Parents/Children Aboard" required>
+            <button type="submit">Check My Luck</button>
+        </form>
+        {% if prediction_text %}
+            <h2 style="color: #00cf8d;">{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
